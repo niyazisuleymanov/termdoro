@@ -1,0 +1,21 @@
+# termdoro
+termdoro.cfg
+termdoro.db
+termdoro.egg-info
+termdoro/__pycache__
+
+# venv
+.Python
+bin
+lib
+pyvenv.cfg
+.venv
+
+build
+dist
+pyproject.toml
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
