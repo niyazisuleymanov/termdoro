@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
   name="termdoro",
-  version="1.1.1",
+  version="1.1.2",
   author="Niyazi Suleymanov",
   author_email="niyazisuleymanov@protonmail.com",
   description="Pomodoro in your terminal",
