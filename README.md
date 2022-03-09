@@ -3,7 +3,7 @@ Termdoro is pomodoro in your terminal.
 
 ## Default Configuration
 
-- Work: 35 minutes
+- Work: 25 minutes
 - Break: 5 minutes
 - Long break: 15 minutes
 - Long break after 4 sessions
