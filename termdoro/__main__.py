@@ -688,7 +688,7 @@ def create_default_config():
     config = configparser.ConfigParser()
     config['DEFAULT'] = {
         'sessions': 6,
-        'work_time': 35 * 60,
+        'work_time': 25 * 60,
         'break': 5 * 60,
         'long_break': 15 * 60,
         'long_break_timing': 4
