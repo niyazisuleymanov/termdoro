@@ -39,6 +39,9 @@ INPUT_LAP = 4
 INPUT_PLUS = 5
 INPUT_MINUS = 6
 
+termdoro_dir = os.path.dirname(__file__)
+cfg_dir = os.path.join(termdoro_dir, 'termdoro.cfg')
+
 
 def setup(stdscr):
     # curses
@@ -693,7 +696,7 @@ def create_default_config():
         'long_break': 15 * 60,
         'long_break_timing': 4
     }
-    with open('termdoro.cfg', 'w') as config_file:
+    with open(cfg_dir, 'w') as config_file:
         config.write(config_file)
 
 
@@ -802,7 +805,7 @@ def main(**kwargs):
             'long_break': long_break * 60,
             'long_break_timing': long_break_timing
         }
-        with open('termdoro.cfg', 'w') as config_file:
+        with open(cfg_dir, 'w') as config_file:
             config.write(config_file)
     elif kwargs['timespec']:
         time_left = curses.wrapper(countdown, **kwargs)
@@ -851,11 +854,11 @@ def main(**kwargs):
             ))
         stderr.flush()
     elif kwargs['pomodoro']:
-        if not os.path.isfile('termdoro.cfg'):
+        if not os.path.isfile(cfg_dir):
             create_default_config()
 
         config = configparser.ConfigParser()
-        config.read('termdoro.cfg')
+        config.read(cfg_dir)
         SESSIONS = int(config['DEFAULT']['sessions'])
         WORK_TIME = int(config['DEFAULT']['work_time'])
         BREAK = int(config['DEFAULT']['break'])

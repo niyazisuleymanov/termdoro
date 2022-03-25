@@ -1,7 +1,11 @@
+import os
 import sqlite3
 
+termdoro_dir = os.path.dirname(__file__)
+db_dir = os.path.join(termdoro_dir, 'termdoro.db')
+
 class Data:
-  connection = sqlite3.connect('termdoro.db')
+  connection = sqlite3.connect(db_dir)
   cursor = connection.cursor()
 
   def __init__(self):
