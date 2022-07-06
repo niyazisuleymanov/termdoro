@@ -24,7 +24,7 @@ setuptools.setup(
   python_requires=">=3.6",
   entry_points={
     "console_scripts": [
-      "termdoro=termdoro.__main__:main",
+      "termdoro=termdoro.main:main",
     ]
   }
 )
