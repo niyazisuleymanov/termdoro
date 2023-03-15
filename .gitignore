@@ -1,8 +1,9 @@
 # termdoro
 termdoro.cfg
 termdoro.db
-termdoro.egg-info
-termdoro/__pycache__
+termdoro.egg-info/
+termdorotest.egg-info/
+termdoro/__pycache__/
 
 # venv
 .Python
