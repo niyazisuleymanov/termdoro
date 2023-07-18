@@ -250,6 +250,12 @@ def print_history() -> None:
       print(f"spent {work_time} working with {break_time} break [{interval}]")
 
 
+def clear_history() -> None:
+  cursor, connection = init_db()
+  cursor.execute('DROP TABLE history')
+  connection.commit()
+
+
 class Mode(Enum):
   POMODORO = 1
   COUNTDOWN = 2
@@ -440,6 +446,10 @@ options.add_argument("-H",
                      "--history",
                      help="show pomodoro history",
                      action="store_true")
+options.add_argument("-C",
+                     "--clear",
+                     help="clear pomodoro history",
+                     action="store_true")
 options.add_argument("-v",
                      "--version",
                      help="echo pomodoro version",
@@ -452,6 +462,8 @@ def main() -> None:
     change_config()
   elif args.history:
     print_history()
+  elif args.clear:
+    clear_history()
   elif args.version:
     print(VERSION)
   else:
