@@ -234,20 +234,22 @@ def print_history() -> None:
   if len(history) == 0:
     print("no recorded history yet. start your first session\n")
     parser.print_help()
+
+  report = {}
   for record in history:
     start_date = datetime.strptime(record[1], "%H:%M:%S %d %B, %Y")
-    work_time = format(int(record[2]))
-    break_time = format(int(record[3])) if int(record[3]) > 0 else "no"
-    end_date = datetime.strptime(record[4], "%H:%M:%S %d %B, %Y")
+    work_time = int(record[2])
+    break_time = int(record[3])
 
-    if (start_date.year == end_date.year and
-        start_date.month == end_date.month and start_date.day == end_date.day):
-      start_time = start_date.strftime("%H:%M:%S")
-      interval = f"{start_time} - {record[4]}"  # same day interval
-      print(f"spent {work_time} working with {break_time} break [{interval}]")
+    key = f"{start_date.day}/{start_date.month}/{start_date.year}"
+    if key not in report:
+      report[key] = (work_time, break_time)
     else:
-      interval = f"[{record[1]} - {record[4]}]"  # interval spanning two days
-      print(f"spent {work_time} working with {break_time} break [{interval}]")
+      report[key] = (report[key][0] + work_time, report[key][1] + break_time)
+
+  for k, v in report.items():
+    break_time = "no" if v[1] == 0 else format(v[1])
+    print(f"spent {format(v[0])} working with {break_time} break [{k}]")
 
 
 def clear_history() -> None:
